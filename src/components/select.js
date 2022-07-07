@@ -5,17 +5,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 
-
-
 export default function Selector(props) {
   const [valor, setValor] = React.useState(props.value);
-  const [data, setData] = React.useState([]);
-
-
-  React.useEffect(() => {
-    setData(props.data)
-  })
-
 
 
   const handleChange = (event) => {
@@ -23,43 +14,83 @@ export default function Selector(props) {
   };
 
 
-  var department = data.map(option => {
+  var department = props.data.map(option => {
     return (
-      <MenuItem key={option.id} value={option.id}>
+      <MenuItem key={option.id} value={option.nombreDepartamento}>
         {option.nombreDepartamento}
       </MenuItem>
     );
   }, this)
 
-  console.log(data)
-  // var ciudad = data[0].ciudades.map(option => {
+  var ciudad = props?.data[props.ciudad]?.ciudades.map(x => {
+    return (
+      <MenuItem key={x.id} value={x.nombreCiudad}>
+        {x.nombreCiudad}
+      </MenuItem>
+    )
+  })
 
-  //   return (
-  //     <MenuItem key={option.id} value={option.id}>
-  //       {option.nombreCiudad}
-  //     </MenuItem>
-  //   )
-  // }, this)
+  if (props.type == 'Ciudad') {
+    return (
+      <div>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={valor}
+            label={props.label}
+            onChange={handleChange}
+            inputProps={{ readOnly: props.readOnly }}
+          >
+            {ciudad}
+          </Select>
+        </FormControl>
+      </div>
 
-  return (
-    <div>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={valor}
-          label={props.label}
-          onChange={handleChange}
-          inputProps={{ readOnly: props.readOnly }}
-        >
-          {department}
-        </Select>
-      </FormControl>
-    </div>
+    );
+  }
+  if (props.type == 'Pais') {
+    return (
+      <div>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value='Colombia'
+            label={props.label}
+            onChange={handleChange}
+            inputProps={{ readOnly: true }}
+          >
+            <MenuItem key={1} value='Colombia'>
+              COLOMBIA
+            </MenuItem>
+          </Select>
+        </FormControl>
+      </div>
 
-  );
+    );
+  }
+  else {
+    return (
+      <div>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={valor}
+            label={props.label}
+            onChange={handleChange}
+            inputProps={{ readOnly: props.readOnly }}
+          >
+            {department}
+          </Select>
+        </FormControl>
+      </div>
 
-
+    );
+  }
 }
 
