@@ -34,7 +34,7 @@ export default function IconBreadcrumbs(props) {
             return (<div role="presentation" onClick={handleClick}>
                 <Breadcrumbs aria-label="Inicio">
                     <Typography
-                        sx={{ display: 'flex', alignItems: 'center' }}
+                        sx={{ display: 'flex', alignItems: 'start' }}
                         color="text.primary"
                     >
                         <Person
@@ -51,7 +51,7 @@ export default function IconBreadcrumbs(props) {
             return (<div role="presentation" onClick={handleClick}>
                 <Breadcrumbs aria-label="Inicio">
                     <Typography
-                        sx={{ display: 'flex', alignItems: 'center' }}
+                        sx={{ display: 'flex', alignItems: 'start' }}
                         color="text.primary"
                     >
                         <Storage
@@ -68,7 +68,7 @@ export default function IconBreadcrumbs(props) {
             return (<div role="presentation" onClick={handleClick}>
                 <Breadcrumbs aria-label="Inicio">
                     <Typography
-                        sx={{ display: 'flex', alignItems: 'center' }}
+                        sx={{ display: 'flex', alignItems: 'start' }}
                         color="text.primary"
                     >
                         <Storage

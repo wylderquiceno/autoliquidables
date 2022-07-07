@@ -89,39 +89,58 @@ function Contribuyente() {
                                 <p className="text">FORMULARIO ÚNICO NACIONAL DE DECLARACIÓN Y PAGO</p>
                                 <p>DEL IMPUESTO DE INDUSTRIA Y COMERCIO</p>
                             </Grid>
-                            <Grid item xd={6}>
+                            <Grid item xd={12}>
                                 <FormControl fullWidth>
-                                    <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
+                                    <FormLabel fullWidth color="warning" id="Form">Tipo Documento</FormLabel>
                                     <RadioGroup
+                                        fullWidth
                                         row
                                         aria-labelledby="demo-row-radio-buttons-group-label"
                                         name="row-radio-buttons-group"
                                         color='warning'
                                     >
-                                        <FormControlLabel value="NIT" control={<Radio />} label="Nit" />
-                                        <FormControlLabel value="CC" control={<Radio />} label="CC" />
-                                        <FormControlLabel value="TI" control={<Radio />} label="TI" />
-                                        <FormControlLabel value="CE" control={<Radio />} label="CE" />
+                                        <FormControlLabel value="NIT" control={<Radio color="warning" />} label="Nit" />
+                                        <FormControlLabel value="CC" control={<Radio color="warning" />} label="CC" />
+                                        <FormControlLabel value="TI" control={<Radio color="warning" />} label="TI" />
+                                        <FormControlLabel value="CE" control={<Radio color="warning" />} label="CE" />
                                     </RadioGroup>
                                 </FormControl>
                             </Grid>
-                            <Grid item xs={6}>
-                                <TextField id="standard-basic" label="Standard" variant="standard" />
+                            <Grid item xs={10}>
+                                <TextField id="standard-basic" fullWidth label="Documento" color='warning' variant="standard" />
                             </Grid>
-                            <Grid item xs={6}>
-                                <TextField id="standard-basic" label="Standard" variant="standard" />
+                            <Grid item xs={2}>
+                                <TextField id="standard-basic" fullWidth label="DV" color='warning' variant="standard" />
                             </Grid>
-                            <Grid item xs={6}>
-                                <TextField id="standard-basic" label="Standard" variant="standard" />
+                            <Grid item xs={3}>
+                                <TextField id="standard-basic" fullWidth label="Nombre" color='warning' variant="standard" />
                             </Grid>
-                            <Grid item xs={6}>
-                                <TextField id="standard-basic" label="Standard" variant="standard" />
+                            <Grid item xs={3}>
+                                <TextField id="standard-basic" fullWidth label="Segundo Nombre" color='warning' variant="standard" />
                             </Grid>
-                            <Grid item xs={6}>
-                                <TextField id="standard-basic" label="Standard" variant="standard" />
+                            <Grid item xs={3}>
+                                <TextField id="standard-basic" fullWidth label="Apellido" color='warning' variant="standard" />
                             </Grid>
-                            <Grid item xs={6}>
-                                <TextField id="standard-basic" label="Standard" variant="standard" />
+                            <Grid item xs={3}>
+                                <TextField id="standard-basic" fullWidth label="Segundo Apellido" color='warning' variant="standard" />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <FormLabel fullWidth color="warning" id="Form">Direccion</FormLabel>
+                            </Grid>
+                            <Grid item xs={3}>
+                                <TextField id="standard-basic" fullWidth label="Direccion" color='warning' variant="standard" />
+                            </Grid>
+                            <Grid item xs={3}>
+                                <Selector data={data} label="Departamento" ></Selector>
+                            </Grid>
+                            <Grid item xs={3}>
+                                <TextField id="standard-basic" fullWidth label="Segundo Apellido" color='warning' variant="standard" />
+                            </Grid>
+                            <Grid item xs={3}>
+                                <TextField id="standard-basic" fullWidth label="Segundo Apellido" color='warning' variant="standard" />
+                            </Grid>
+                            <Grid item xs={3}>
+                                <TextField id="standard-basic" fullWidth label="Segundo Apellido" color='warning' variant="standard" />
                             </Grid>
                             <Box
                                 sx={{

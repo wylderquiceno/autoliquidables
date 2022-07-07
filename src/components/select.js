@@ -33,7 +33,7 @@ export default function Selector(props) {
   if (props.type == 'Ciudad') {
     return (
       <div>
-        <FormControl fullWidth>
+        <FormControl variant="standard" fullWidth>
           <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
           <Select
             labelId="demo-simple-select-label"
@@ -42,6 +42,7 @@ export default function Selector(props) {
             label={props.label}
             onChange={handleChange}
             inputProps={{ readOnly: props.readOnly }}
+            color='warning'
           >
             {ciudad}
           </Select>
@@ -53,7 +54,7 @@ export default function Selector(props) {
   if (props.type == 'Pais') {
     return (
       <div>
-        <FormControl fullWidth>
+        <FormControl variant="standard" fullWidth>
           <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
           <Select
             labelId="demo-simple-select-label"
@@ -62,6 +63,7 @@ export default function Selector(props) {
             label={props.label}
             onChange={handleChange}
             inputProps={{ readOnly: true }}
+            color='warning'
           >
             <MenuItem key={1} value='Colombia'>
               COLOMBIA
@@ -75,7 +77,7 @@ export default function Selector(props) {
   else {
     return (
       <div>
-        <FormControl fullWidth>
+        <FormControl variant="standard" fullWidth>
           <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
           <Select
             labelId="demo-simple-select-label"
@@ -84,6 +86,7 @@ export default function Selector(props) {
             label={props.label}
             onChange={handleChange}
             inputProps={{ readOnly: props.readOnly }}
+            color='warning'
           >
             {department}
           </Select>
