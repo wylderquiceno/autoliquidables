@@ -8,27 +8,25 @@ import { styled } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
 import Selector from '../components/select';
 import ToggleButton from '../components/ToggleButtonGroup';
-import { Button, TextField, FormControlLabel, Radio, RadioGroup, FormLabel, FormControl } from '@mui/material';
+import { Button, TextField, FormControlLabel, Radio, RadioGroup, FormLabel, FormControl, Select, InputLabel, MenuItem } from '@mui/material';
+
 
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    height: 900,
+    height: 10000,
     lineHeight: '60px',
 }));
 
 
 
-function Contribuyente() {
+function Contribuyente(props) {
     const [data, setData] = useState([])
+    const [ciudades, setCiudades] = useState([])
     const [uso, setUso] = useState('INI')
-
-    var handleChage = (event) => {
-        if (event.target.type == 'Uso') {
-            this.setUso(event.target.value)
-        }
-    }
+    const [ciudad, setCiudad] = useState('')
+    const [departamento, setDepartamento] = useState('')
 
     var serviceBase = 'https://localhost:7111'
 
@@ -41,13 +39,40 @@ function Contribuyente() {
             setData(json);
         });
     }
-
+    
     useEffect(() => {
         getDepartamentos()
-    }, [])
+        data.find((x) => {
+            if (x.nombreDepartamento == departamento) {
+                setCiudades(x.ciudades)
+            }
+        })
+    })
+
+    var handleChageDep = (event) => {
+        setDepartamento(event.target.value)
+    }
+    var mapDepartamento = data.map((x) => {
+        return (
+            <MenuItem key={x.id} value={x.nombreDepartamento}>
+                {x.nombreDepartamento}
+            </MenuItem>
+
+        )
+    })
+
+    var mapCiudades = ciudades.map((x) => {
+        console.log(x)
+        return (
+            <MenuItem key={x.id} value={x.nombreCiudad}>
+                {x.nombreCiudad}
+            </MenuItem>
+        )
+    })
+
+
 
     const history = useNavigate();
-    const navHome = () => history('/home');
 
 
     return (
@@ -91,9 +116,8 @@ function Contribuyente() {
                             </Grid>
                             <Grid item xd={12}>
                                 <FormControl fullWidth>
-                                    <FormLabel fullWidth color="warning" id="Form">Tipo Documento</FormLabel>
+                                    <FormLabel color="warning" id="Form">Tipo Documento</FormLabel>
                                     <RadioGroup
-                                        fullWidth
                                         row
                                         aria-labelledby="demo-row-radio-buttons-group-label"
                                         name="row-radio-buttons-group"
@@ -131,7 +155,38 @@ function Contribuyente() {
                                 <TextField id="standard-basic" fullWidth label="Direccion" color='warning' variant="standard" />
                             </Grid>
                             <Grid item xs={3}>
-                                <Selector data={data} label="Departamento" ></Selector>
+                                <FormControl variant="standard" fullWidth>
+                                    <InputLabel color='warning' id="demo-simple-select-label">Departamento</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={departamento}
+                                        label='departamento'
+                                        onChange={handleChageDep}
+                                        inputProps={{ readOnly: false }}
+                                        color='warning'
+                                    >
+                                        {mapDepartamento}
+                                    </Select>
+                                </FormControl>
+
+                            </Grid>
+                            <Grid item xs={3}>
+                                <FormControl variant="standard" fullWidth>
+                                    <InputLabel color='warning' id="demo-simple-select-label">Ciudad</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={ciudad}
+                                        label='Ciudad'
+                                        onChange={(event) => { setCiudad(event.target.value) }}
+                                        inputProps={{ readOnly: false }}
+                                        color='warning'
+                                    >
+                                        {mapCiudades}
+                                    </Select>
+                                </FormControl>
+
                             </Grid>
                             <Grid item xs={3}>
                                 <TextField id="standard-basic" fullWidth label="Segundo Apellido" color='warning' variant="standard" />
@@ -156,16 +211,12 @@ function Contribuyente() {
                                     justifyContent="center"
                                     alignItems="center">
                                     <Grid item xs={6}>
-                                        <Button color='warning' onClick={navHome} size="large" variant="contained">Atras</Button>
+                                        <Button color='warning' onClick={() => { history('/home') }} size="large" variant="contained">Atras</Button>
                                     </Grid>
                                     <Grid item xs={6}>
                                         <Button color='warning' size="large" variant="contained">Siguiente</Button>
                                     </Grid>
                                 </Grid>
-
-
-
-
                             </Box>
                         </Grid>
                     </Box>

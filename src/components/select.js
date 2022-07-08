@@ -7,10 +7,13 @@ import Select from '@mui/material/Select';
 
 export default function Selector(props) {
   const [valor, setValor] = React.useState(props.value);
+  const [id, setID] = React.useState("");
 
 
   const handleChange = (event) => {
     setValor(event.target.value);
+    setValor(event.target.key)
+
   };
 
 
@@ -34,7 +37,7 @@ export default function Selector(props) {
     return (
       <div>
         <FormControl variant="standard" fullWidth>
-          <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
+          <InputLabel color='warning' id="demo-simple-select-label">{props.label}</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -55,7 +58,7 @@ export default function Selector(props) {
     return (
       <div>
         <FormControl variant="standard" fullWidth>
-          <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
+          <InputLabel color='warning' id="demo-simple-select-label">{props.label}</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -78,7 +81,7 @@ export default function Selector(props) {
     return (
       <div>
         <FormControl variant="standard" fullWidth>
-          <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
+          <InputLabel color='warning' id="demo-simple-select-label">{props.label}</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
