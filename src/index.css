@@ -22,3 +22,8 @@ code {
   margin:0;
   height: 10px !important;
 }
+
+
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+  color: orange !important;
+}

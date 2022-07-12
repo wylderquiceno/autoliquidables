@@ -15,7 +15,7 @@ const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    height: 10000,
+    height: 900,
     lineHeight: '60px',
 }));
 
@@ -27,6 +27,7 @@ function Contribuyente(props) {
     const [uso, setUso] = useState('INI')
     const [ciudad, setCiudad] = useState('')
     const [departamento, setDepartamento] = useState('')
+    const [tipoDocumento, setTipoDocumento] = useState('CC')
 
     var serviceBase = 'https://localhost:7111'
 
@@ -62,15 +63,12 @@ function Contribuyente(props) {
     })
 
     var mapCiudades = ciudades.map((x) => {
-        console.log(x)
         return (
             <MenuItem key={x.id} value={x.nombreCiudad}>
                 {x.nombreCiudad}
             </MenuItem>
         )
     })
-
-
 
     const history = useNavigate();
 
@@ -122,6 +120,10 @@ function Contribuyente(props) {
                                         aria-labelledby="demo-row-radio-buttons-group-label"
                                         name="row-radio-buttons-group"
                                         color='warning'
+                                        value={tipoDocumento}
+                                        onChange={(event) => {
+                                            setTipoDocumento(event.target.value)
+                                        }}
                                     >
                                         <FormControlLabel value="NIT" control={<Radio color="warning" />} label="Nit" />
                                         <FormControlLabel value="CC" control={<Radio color="warning" />} label="CC" />
@@ -211,7 +213,7 @@ function Contribuyente(props) {
                                     justifyContent="center"
                                     alignItems="center">
                                     <Grid item xs={6}>
-                                        <Button color='warning' onClick={() => { history('/home') }} size="large" variant="contained">Atras</Button>
+                                        <Button color='warning' onClick={() => { history('/') }} size="large" variant="contained">Atras</Button>
                                     </Grid>
                                     <Grid item xs={6}>
                                         <Button color='warning' size="large" variant="contained">Siguiente</Button>

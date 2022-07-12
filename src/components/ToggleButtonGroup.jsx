@@ -1,36 +1,69 @@
 import * as React from 'react';
-import { useState } from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import { Grid } from '@mui/material';
-import { orange } from '@mui/material/colors';
+import { Grid, Box } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import Box from '@mui/material';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+
 
 export default function ColorToggleButton(props) {
     const [alignment, setAlignment] = React.useState(props.value);
+    const [date, setDate] = React.useState('08/08/2022')
 
     const handleChange = (event, newAlignment) => {
         setAlignment(newAlignment);
+    };
+
+    const handleChangeDate = (newValue) => {
+        setDate(newValue)
     };
 
     var Correccion = () => {
         if (alignment == "CORR") {
             return (
                 <>
-                    <br />
                     <Grid item xs={12}
                         container spacing={5}
                         direction="row"
                         justifyContent=""
                         alignItems="">
-                        <Grid xs={12}>
-                            <br />
-                            <TextField id="outlined-basic" label="Número Declaración que Corrige" variant="outlined" />
-                            <TextField id="standard-basic" label="Valor Declaración que Corrige" variant="outlined" />
-                            <TextField id="standard-basic" label="Fecha de Presentación" variant="outlined" />
+                        <Grid xs={3}>
+                            <TextField fullWidth id="outlined-basic" color='warning' label="Número Declaración que Corrige" variant="standard" />
                         </Grid>
+                        <Grid xs={1}>
+
+                        </Grid>
+                        <Grid xs={3}>
+                            <TextField fullWidth id="standard-basic" color='warning' label="Valor Declaración que Corrige" variant="standard" />
+                        </Grid>
+                        <Grid xs={1}>
+
+                        </Grid>
+                        <Grid xs={4}>
+                            <ToggleButtonGroup
+                                color='warning'
+                                value={alignment}
+                                exclusive>
+                                <LocalizationProvider color='warning' dateAdapter={AdapterDateFns}>
+                                    <DesktopDatePicker
+                                    color="warning"
+                                        label="Date desktop"
+                                        inputFormat="MM/dd/yyyy"
+                                        value={date}
+                                        onChange={handleChangeDate}
+                                        renderInput={(params) => <TextField {...params} />}
+                                    />
+                                </LocalizationProvider>
+                            </ToggleButtonGroup>
+
+
+                        </Grid>
+
                     </Grid>
+
+
                 </>
 
             )
@@ -56,7 +89,19 @@ export default function ColorToggleButton(props) {
                 >
                     <ToggleButton value="CORR">Correccion</ToggleButton>
                 </ToggleButtonGroup>
-                {Correccion()}
+                <Box sx={{
+                    flexGrow: 1,
+                    p: 6
+                }}>
+                    <Grid item xs={12}
+                        container spacing={5}
+                        direction="row"
+                        justifyContent=""
+                        alignItems="">
+                        {Correccion()}
+                    </Grid>
+                </Box>
+
             </>
 
 
